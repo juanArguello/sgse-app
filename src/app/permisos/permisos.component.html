@@ -1,0 +1,26 @@
+<div class="col-lg-3 mb-3 mt-2">
+    <button  class="btn btn-success btn-sm bi bi-plus"  type="button"
+    [routerLink]="['/administracion/permiso']">Agregar Permiso</button>
+</div>
+<div class="card border-primary mb-3">
+    <div class="card-header">Permisos</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de Pemisos</h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let permiso of permisos">
+                    <td>{{permiso.id}}</td>
+                    <td>{{permiso.nombre}}</td>
+                    <td>{{permiso.descripcion}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
