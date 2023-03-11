@@ -9,14 +9,12 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let permiso of permisos">
-                    <td>{{permiso.id}}</td>
                     <td>{{permiso.nombre}}</td>
                     <td>{{permiso.descripcion}}</td>
                 </tr>
