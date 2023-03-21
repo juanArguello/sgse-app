@@ -1,22 +1,54 @@
+ <ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let err of errores">
+        {{err}}
+    </li>
+</ul> 
 <div class="card bg-dark text-white">
-    <div class="card-header">{{titulo}}</div>
+    <div class="card-header">
+        <p *ngIf="!permiso.id else createOrUpdate">Crear Permiso</p>
+        <ng-template #createOrUpdate>
+            <p>Actualizar Permiso</p>
+        </ng-template>
+    </div>
     <div class="card-body">
-        <form (ngSubmit)="create()">
+        <form  #permisoForm="ngForm" autocomplete="on">
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
-                    <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="permiso.nombre">
+                    <input type="text" name="nombre" id="" class="form-control" [(ngModel)]="permiso.nombre" [autofocus]="['on']"
+                        required minlength="4"  #nombre="ngModel"> <!--  -->
+                        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <div *ngIf="nombre.errors?.['required']">
+                                El campo nombre es requerido
+                            </div>
+                            <div *ngIf="nombre.errors?.['minlength']">
+                                El campo nombre debe tener al menos 4 caracteres
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="descripcion" class="col-form-label col-sm-2">Descripcion</label>
                 <div class="col-sm-6">
-                    <input type="text" name="descripcion" id="" class="form-control" [(ngModel)]="permiso.descripcion">
+                    <input type="text" name="descripcion" id="" class="form-control" [(ngModel)]="permiso.descripcion" 
+                        required minlength="4" #descripcion="ngModel"> <!--  -->
+                        <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                            <div *ngIf="descripcion.errors?.['required']">
+                                El campo descripcion es requerido
+                            </div>
+                            <div *ngIf="descripcion.errors?.['minlength']">
+                                El campo descripcion debe tener al menos 4 caracteres
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary">Crear</button>
+                    <button class="btn btn-primary" (click)="create()" *ngIf="!permiso.id else elseBlock" 
+                        [disabled]="!permisoForm.form.valid" >Crear</button>
+                        <ng-template #elseBlock>
+                            <button class="btn btn-primary" (click)="update()" [disabled]="!permisoForm.form.valid">Editar</button>
+                        </ng-template>
                 </div>
             </div>
         </form>

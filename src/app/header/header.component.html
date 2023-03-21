@@ -1,38 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#">
-		<img src="./assets/images/logo.jpg" height="30" width="30" />
-	</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="#">{{titulo}}<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item" routerLinkActive="active">
-				<a class="nav-link" routerLink="/administracion">Administración</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link">Ventas</a>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-					Dropdown
-				</a>
-				<div class="dropdown-menu bg-dark" aria-labelledby="dropdown01">
-					<a class="dropdown-item  text-white" href="#">Action</a>
-					<a class="dropdown-item  text-white" href="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item  text-white" href="#">Something else here</a>
-				</div>
-			</li>
-		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
+<nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">
+			<img src="./assets/images/logo.jpg" height="30" width="30" />
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/" routerLinkActive="active" aria-current="page" href="#">{{home}}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="administracion" routerLinkActive="active">Administración</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Ventas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Seguros</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Facturacion</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Auditoria</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Reportes</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						Herramientas
+					</a>
+					<ul class="dropdown-menu bg-dark">
+						<li><a class="dropdown-item  text-white" href="#">Action</a></li>
+						<li><a class="dropdown-item  text-white" href="#">Another action</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item  text-white" href="#">Something else here</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+			<form class="d-flex" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		</div>
 	</div>
 </nav>

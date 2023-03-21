@@ -1,24 +1,46 @@
-<div class="col-lg-3 mb-3 mt-2">
-    <button  class="btn btn-success btn-sm bi bi-plus"  type="button"
-    [routerLink]="['/administracion/permiso']">Agregar Permiso</button>
-</div>
-<div class="card border-primary mb-3">
-    <div class="card-header">Permisos</div>
+<div class="card text-primary my-2">
+    <div class="card-header">
+        Permisos
+    </div>
     <div class="card-body text-primary">
         <h5 class="card-title">Listado de Pemisos</h5>
-        <table class="table table-bordered table-striped">
+        <div class="my-2 text-start">
+            <button class="btn btn-success btn-sm bi bi-plus" type="button"
+                [routerLink]="['/administracion/permiso']">Agregar Permiso</button>
+        </div>
+        <div *ngIf="permisos.length == 0" class="alert alert-info" role="alert">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped" *ngIf="permisos.length>0">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let permiso of permisos">
+                    <td>{{permiso.id}}</td>
                     <td>{{permiso.nombre}}</td>
                     <td>{{permiso.descripcion}}</td>
+                    <td>
+                        <div class='text-center'>
+                            <div class='btn-group'>
+                                <button class='btn btn-warning btn-sm text-white'
+                                    [routerLink]="['/administracion/permiso',permiso.id]" data-toggle='tooltip'
+                                    data-placement='top' title='Editar Permiso'><i class='bi bi-pencil-fill'></i>
+                                </button>
+                                <button (click)="delete(permiso)" class='btn btn-danger btn-sm' data-toggle='tooltip'
+                                    data-placement='top' title='Eliminar Permiso'><i class='bit bi-trash-fill'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
     </div>
 </div>

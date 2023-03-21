@@ -1,0 +1,22 @@
+<nav>
+    <ul *ngIf="paginas!.length > 0" class="pagination  justify-content-end">
+        <li class="page-item">
+            <a class="page-link disabled">Total registros: {{paginador.totalRegistros}} </a>
+        </li>
+        <li class="page-item" *ngIf="paginador.actualNumeroPagina > 1">
+            <a class="page-link" [routerLink]="['/administracion/page', paginador.actualNumeroPagina-1]">
+                <span aria-hidden="true">Anterior</span>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let pagina of paginas" ngClass="pagina == paginador.actualNumeroPagina?'disabled':''">
+            <span class="page-link" *ngIf="pagina == paginador.actualNumeroPagina">{{pagina}}</span>
+            <a class="page-link" *ngIf="pagina != paginador.actualNumeroPagina"
+                [routerLink]="['/administracion/page', pagina]">{{pagina}}</a>
+        </li>
+        <li class="page-item" *ngIf="paginador.actualNumeroPagina < paginador.ultimoNumeroPagina">
+            <a class="page-link" [routerLink]="['/administracion/page', paginador.actualNumeroPagina+1]">
+                <span aria-hidden="true">Siguiente</span>
+            </a>
+        </li>
+    </ul>
+</nav>

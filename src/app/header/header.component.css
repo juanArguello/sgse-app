@@ -1,0 +1,6 @@
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #007bff;
+} 
+.navbar{
+    padding: 0.4rem 1rem;
+}
