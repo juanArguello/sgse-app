@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 mb-4">
-                            <a href="" class="card bg-primary text-white h-100 ">
+                            <a routerLink="usuarios" class="card bg-primary text-white h-100 ">
                                 <div class="card-body py-5">
                                     <h4>Usuarios</h4>
                                     <h2 class="justify-content-start">
@@ -16,7 +16,7 @@
                                     </h2>
                                     <p class="m-b-0 text-right">
                                         <span class="h2">
-                                            cantidadUsuario
+                                            {{cantidadUsuarios}}
                                         </span>
                                         registrado
                                     </p>
@@ -32,7 +32,7 @@
                                     </h2>
                                     <p class="m-b-0 text-right">
                                         <span class="h2">
-                                            cantidadRol
+                                            {{cantidadRoles}}
                                         </span>
                                         registrado
                                     </p>
@@ -47,8 +47,8 @@
                                         <i class="bi bi-lock-fill"></i>
                                     </h2>
                                     <p class="m-b-0 text-right">
-                                        <span class="h2">
-                                            CantidadPermiso
+                                        <span class="h3">
+                                            {{cantidadPermisos}}
                                         </span>
                                         registrado
                                     </p>

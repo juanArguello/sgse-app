@@ -2,7 +2,7 @@
     <div class="card-header">
         Permisos
     </div>
-    <div class="card-body text-primary">
+    <div class="card-body text-primary table-responsive">
         <h5 class="card-title">Listado de Pemisos</h5>
         <div class="my-2 text-start">
             <button class="btn btn-success btn-sm bi bi-plus" type="button"
@@ -11,7 +11,7 @@
         <div *ngIf="permisos.length == 0" class="alert alert-info" role="alert">
             No hay registros en la base de datos
         </div>
-        <table class="table table-bordered table-striped" *ngIf="permisos.length>0">
+        <table class="table table-bordered table-striped table-hover" *ngIf="permisos.length>0">
             <thead>
                 <tr>
                     <th>Id</th>

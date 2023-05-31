@@ -1,1 +1,51 @@
-<p>roles works!</p>
+ <app-ver-permisos *ngIf="rolSeleccionado" [rol]="rolSeleccionado" >
+</app-ver-permisos>
+
+<div class="card text-primary my-2">
+    <div class="card-header">
+        Roles
+    </div>
+    <div class="card-body text-primary table-responsive">
+        <h5 class="card-title">Listado de Roles</h5>
+        <div class="my-2 text-start">
+            <button class="btn btn-success btn-sm bi bi-plus" type="button"
+                [routerLink]="['/administracion/rol']">Agregar Rol</button>
+        </div>
+        <div *ngIf="roles.length == 0" class="alert alert-info" role="alert">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped table-hover" *ngIf="roles.length>0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rol of roles">
+                    <td>{{rol.id}}</td>
+                    <td>{{rol.nombre}}</td>
+                    <td>{{rol.descripcion}}</td>
+                    <td>
+                        <div class='text-center'>
+                            <div class='btn-group'>
+                                <button (click)="openModal(rol)" class='btn btn-info btn-sm' data-toggle='tooltip'
+                                    data-placement='top' title='Ver Permisos'><i class='bi bi-search'></i></button>
+                                <button class='btn btn-warning btn-sm text-white'
+                                    [routerLink]="['/administracion/rol',rol.id]" data-toggle='tooltip'
+                                    data-placement='top' title='Editar Rol'><i class='bi bi-pencil-fill'></i>
+                                </button>
+                                <button (click)="delete(rol)" class='btn btn-danger btn-sm' data-toggle='tooltip'
+                                    data-placement='top' title='Eliminar Rol'><i class='bit bi-trash-fill'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
+    </div>
+</div>

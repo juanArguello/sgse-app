@@ -1,0 +1,47 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar" class="align-text-bottom"></span>
+                Esta Semana
+            </button>
+        </div>
+    </div>
+
+    
+    <h2>{{tituloCliente}}</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Ruc</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Estado de cuenta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes">
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellido}}</td>
+                    <td>{{cliente.cedula}}</td>
+                    <td>{{cliente.ruc}}</td>
+                    <td>{{cliente.direccion}}</td>
+                    <td>{{cliente.telefono}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.estadoCuenta}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</main>

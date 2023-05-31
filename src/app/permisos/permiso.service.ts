@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.development';
 import { Permiso } from './permiso';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
@@ -10,15 +11,17 @@ import { Router } from '@angular/router';
 })
 export class PermisoService {
 
-	private urlEndPoint: string = 'http://localhost:8080/api/permisos';
+	private urlEndPoint: string = environment.API_BASE_URL+'permisos';
 	private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 	constructor(private httpClient: HttpClient, private router: Router) { }
 
 	createPermiso(permiso: Permiso): Observable<any> {
-		return this.httpClient.post<any>(this.urlEndPoint, permiso, { headers: this.httpHeaders }).pipe(
+		return this.httpClient.post<any>(this.urlEndPoint, permiso, { headers: this.httpHeaders })
+		 .pipe(
 			catchError(e => {
 				if (e.status == 400) {
+					Swal.fire(e.error.mensaje, e.error.error, 'error');
 					return throwError(() => new Error(e));
 				}
 				Swal.fire(e.error.mensaje, e.error.error, 'error');

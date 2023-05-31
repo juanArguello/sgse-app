@@ -1,0 +1,29 @@
+<div class="container col-lg-7 text-center mt-5">
+    <div class="card border-secondary" >
+        <div class="card-header">
+            <img src="./assets/images/logo.jpg" height="80" width="80"  />
+            <p><strong class="card-title">{{tituloLogin}}</strong></p>
+            
+        </div>
+        <div class="card-body">
+            <form method="post" autocomplete="on" #form="ngForm" (ngSubmit)="login(form)">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control border-secondary" name="username" id="username" 
+                        placeholder="Username" [(ngModel)]="credencial.username" autofocus required>
+                </div>
+                <div class="input-group col-sm-6 mb-3">
+                    <input type="password" class="form-control border-secondary" name="password" id="password" 
+                        placeholder="Password" [(ngModel)]="credencial.password" required>
+                    <button type="button" (click)="mostrarPassword()" class="input-group-text border-secondary">
+                        <i id="icono" class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+                <div class="input-group col-sm-6 mb-3 mt-5">
+                    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in"/>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+

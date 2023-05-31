@@ -24,7 +24,7 @@ export class PermisosComponent implements OnInit {
 			permisos => this.permisos = permisos);*/
 		this.activatedRoute.paramMap.subscribe(params => {
 			let page: number = +params.get('page')!;
-
+		
 			if (!page) {
 				page = 1;
 			}

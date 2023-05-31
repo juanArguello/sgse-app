@@ -1,0 +1,175 @@
+<ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let err of errores">
+        {{err}}
+    </li>
+</ul>
+<div class="card border-info">
+    <div class="card-header">
+        <h5 class="card-title">
+            <p *ngIf="!usuario.id else createOrUpdate">Crear Usuario</p>
+            <ng-template #createOrUpdate>
+                <p>Actualizar Usuario</p>
+            </ng-template>
+        </h5>
+    </div>
+    <div class="card-body">
+        <form #usuarioForm="ngForm" autocomplete="on">
+            <div class="form-group row mb-3">
+                <label for="cedula" class="col-form-label col-sm-2">Cedula</label>
+                <div class="col-sm-6">
+                    <input type="number" name="cedula" class="form-control" [(ngModel)]="usuario.cedula"
+                        [autofocus]="['on']" required minlength="4" #cedula="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
+                        <div *ngIf="cedula.errors?.['required']">
+                            El campo Cedula es requerido
+                        </div>
+                        <div *ngIf="cedula.errors?.['minlength']">
+                            El campo Cedula debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="ruc" class="col-form-label col-sm-2">RUC</label>
+                <div class="col-sm-6">
+                    <input type="text" name="ruc" class="form-control" [(ngModel)]="usuario.ruc" [autofocus]="['on']"
+                        minlength="4" #ruc="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+                        <div *ngIf="ruc.errors?.['minlength']">
+                            El campo RUC debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" name="nombre" class="form-control" [(ngModel)]="usuario.nombre"
+                        [autofocus]="['on']" required minlength="4" #nombre="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div *ngIf="nombre.errors?.['required']">
+                            El campo nombre es requerido
+                        </div>
+                        <div *ngIf="nombre.errors?.['minlength']">
+                            El campo nombre debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
+                <div class="col-sm-6">
+                    <input type="text" name="apellido" class="form-control" [(ngModel)]="usuario.apellido"
+                        [autofocus]="['on']" required minlength="4" #apellido="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                        <div *ngIf="apellido.errors?.['required']">
+                            El campo Apellido es requerido
+                        </div>
+                        <div *ngIf="apellido.errors?.['minlength']">
+                            El campo Apellido debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="direccion" class="col-form-label col-sm-2">Direccion</label>
+                <div class="col-sm-6">
+                    <input type="text" name="direccion" class="form-control" [(ngModel)]="usuario.direccion"
+                        [autofocus]="['on']" required minlength="4" #direccion="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                        <div *ngIf="direccion.errors?.['required']">
+                            El campo Direccion es requerido
+                        </div>
+                        <div *ngIf="direccion.errors?.['minlength']">
+                            El campo Direccion debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
+                <div class="col-sm-6">
+                    <input type="text" name="telefono" class="form-control" [(ngModel)]="usuario.telefono"
+                        [autofocus]="['on']" required minlength="4" #telefono="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                        <div *ngIf="telefono.errors?.['required']">
+                            El campo Telefono es requerido
+                        </div>
+                        <div *ngIf="telefono.errors?.['minlength']">
+                            El campo Telefono debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="email" class="col-form-label col-sm-2">Correo Electronico</label>
+                <div class="col-sm-6">
+                    <input type="email" name="email" class="form-control" [(ngModel)]="usuario.email"
+                        [autofocus]="['on']" required minlength="4" #email="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors?.['required']">
+                            El campo Correo Electronico es requerido
+                        </div>
+                        <div *ngIf="email.errors?.['minlength']">
+                            El campo Correo Electronico debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="username" class="col-form-label col-sm-2">Nombre Usuario</label>
+                <div class="col-sm-6">
+                    <input type="text" name="username" class="form-control" [(ngModel)]="usuario.username"
+                        [autofocus]="['on']" required minlength="4" #username="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div *ngIf="username.errors?.['required']">
+                            El campo Nombre Usuario es requerido
+                        </div>
+                        <div *ngIf="username.errors?.['minlength']">
+                            El campo Nombre Usuario debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="password" class="col-form-label col-sm-2">Contraseña</label>
+                <div class="col-sm-6">
+                    <input type="password" name="password" class="form-control" [(ngModel)]="usuario.password"
+                        [autofocus]="['on']" required minlength="4" #password="ngModel"> <!--  -->
+                    <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors?.['required']">
+                            El campo Contraseña es requerido
+                        </div>
+                        <div *ngIf="password.errors?.['minlength']">
+                            El campo Contraseña debe tener al menos 4 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="rol" class="col-form-label col-sm-2">Lista de Rol</label>
+                <div class="col-sm-6">
+                    <ng-select class="form-select" 
+                        
+                        [items]="rolLista | async" 
+                        [multiple]="false"
+                        placeholder="Seleccionar un Rol"
+                        (change)="onItemSelect($event)"
+                        bindLabel="nombre" 
+                        bindValue="id">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" (click)="create()" *ngIf="!usuario.id else elseBlock"
+                        [disabled]="!usuarioForm.form.valid">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" (click)="update()"
+                            [disabled]="!usuarioForm.form.valid">Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,61 @@
-<p>usuarios works!</p>
+<div class="card text-primary my-2">
+    <div class="card-header">
+        Usuarios
+    </div>
+    <div class="card-body text-primary table-responsive">
+        <h5 class="card-title">Listado de Usuarios</h5>
+        <div class="my-2 text-start">
+            <button class="btn btn-success btn-sm bi bi-plus" type="button"
+                [routerLink]="['/administracion/usuario']">Agregar Usuario</button>
+        </div>
+        <div *ngIf="usuarios.length == 0" class="alert alert-info" role="alert">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped table-hover" *ngIf="usuarios.length>0">
+            <thead>
+                <tr>
+                    <th>Cedula</th>
+                    <th>RUC</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Habilitado</th>
+                    <th>Username</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td>{{usuario.cedula}}</td>
+                    <td>{{usuario.ruc}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.direccion}}</td>
+                    <td>{{usuario.telefono}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.fechaIngreso}}</td>
+                    <td>{{usuario.enabled}}</td>
+                    <td>{{usuario.username}}</td>
+                    <td>{{usuario.idRol.nombre}}</td>
+                    <td>
+                        <div class='text-center'>
+                            <div class='btn-group'>
+                                <button class='btn btn-warning btn-sm text-white'
+                                    [routerLink]="['/administracion/usuario',usuario.id]" data-toggle='tooltip'
+                                    data-placement='top' title='Editar Usuario'><i class='bi bi-pencil-fill'></i>
+                                </button>
+                                <button (click)="delete(usuario)" class='btn btn-danger btn-sm' data-toggle='tooltip'
+                                    data-placement='top' title='Eliminar Usuario'><i class='bit bi-trash-fill'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
+    </div>
+</div>

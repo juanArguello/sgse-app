@@ -13,7 +13,8 @@ export class FormComponent implements OnInit {
 	permiso: Permiso = new Permiso();
 	errores: string[] = [];
 
-	constructor(private permisoService: PermisoService, private router: Router, private activatedRoute: ActivatedRoute) { }
+	constructor(private permisoService: PermisoService, private router: Router, 
+		private activatedRoute: ActivatedRoute) { }
 
 	ngOnInit(): void {
 		this.cargarPermiso();
@@ -33,7 +34,7 @@ export class FormComponent implements OnInit {
 	public create(): void {
 		this.permisoService.createPermiso(this.permiso).subscribe(
 			response => {
-				this.router.navigate(['/administracion']);
+				this.router.navigate(['administracion/permisos']);
 				Swal.fire({
 					position: 'bottom-end',
 					icon: 'success',
@@ -54,7 +55,7 @@ export class FormComponent implements OnInit {
 	update(): void {
 		this.permisoService.updatePermiso(this.permiso).subscribe(
 			response => {
-				this.router.navigate(['/administracion'])
+				this.router.navigate(['administracion/permisos'])
 				Swal.fire({
 					position: 'bottom-end',
 					icon: 'success',
@@ -63,12 +64,12 @@ export class FormComponent implements OnInit {
 					showConfirmButton: false,
 					timer: 3000
 				})
-			}/*,
+			}/* ,
 			err => {
 				this.errores = err.error?.errors as string[];
 				console.error('Codigo de error desde el backend'+err.status);
 				console.error(err.error?.errors);
-			}*/
+			} */
 		)
 	}
 }
